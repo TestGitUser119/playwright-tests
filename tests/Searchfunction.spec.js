@@ -1,0 +1,32 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://ultimateqa.com/automation');
+  await page.getByRole('link', { name: 'Big page with many elements' }).click();
+  await page.locator('.et_pb_button').first().click();
+  await expect(page.locator('#Section_of_Random_Stuff')).toBeVisible();
+  await page.locator('#et_pb_contact_name_0').click();
+  await page.locator('#et_pb_contact_name_0').fill('test');
+  await page.locator('#et_pb_contact_name_0').press('Tab');
+  await page.locator('#et_pb_contact_email_0').fill('test@msn.com');
+  await page.locator('#et_pb_contact_email_0').press('Tab');
+  await page.locator('#et_pb_contact_message_0').click();
+  await page.locator('#et_pb_contact_message_0').fill('hello how are you');
+  await page.locator('input[name="et_pb_contact_captcha_0"]').click();
+  await page.getByText('+ 6 =').click();
+  await page.getByText('+ 6').click();
+  await page.locator('input[name="et_pb_contact_captcha_0"]').click();
+  await page.locator('input[name="et_pb_contact_captcha_0"]').fill('11');
+  await page.locator('#et_pb_contact_form_0').getByRole('button', { name: 'Submit 9' }).click();
+  await page.locator('#user_login_687ba6417815b').click();
+  await page.locator('#user_login_687ba6417815b').fill('test');
+  await page.locator('#user_login_687ba6417815b').press('Tab');
+  await page.locator('#user_pass_687ba6417815b').click();
+  await page.locator('#user_pass_687ba6417815b').fill('test@msn.com');
+  await page.getByRole('button', { name: 'Login 9' }).first().click();
+  await page.getByRole('link', { name: 'Lost your password?' }).click();
+  await page.getByLabel('Username or Email Address').click();
+  await page.getByLabel('Username or Email Address').fill('test@msn.com');
+  await page.getByRole('button', { name: 'Get New Password' }).click();
+  await page.getByRole('link', { name: '← Go to Ultimate QA' }).click();
+});

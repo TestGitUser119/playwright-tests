@@ -6,7 +6,7 @@ test('Stock Adjustment Workflow with Delays', async ({ page }) => {
   test.setTimeout(300000); // 5 minute timeout
 
   // Helper function for consistent 2-second delays
-  const delay = () => page.waitForTimeout(3000);
+  const delay = () => page.waitForTimeout(4000);
 
   // 1. Navigate to application
   await page.goto('http://128.1.103.4/Ver73_HICO_NDB/Default.aspx');

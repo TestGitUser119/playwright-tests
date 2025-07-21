@@ -21,11 +21,11 @@ test('file upload test with screenshots and reporting', async ({ page }) => {
   await page.screenshot({ path: `${screenshotDir}/04-button-visible.png`, fullPage: true });
 
   const filePath = path.resolve('D:/Test Automation/PlaywrightProject/Project/test-data/Needtobeupload.txt');
-  await page.waitForTimeout(1000); // optional wait
+  await page.waitForTimeout(2000); // optional wait
   await page.locator('#file-upload').setInputFiles(filePath);
   await page.screenshot({ path: `${screenshotDir}/05-file-selected.png`, fullPage: true });
 
-  await page.waitForTimeout(1000); // optional wait
+  await page.waitForTimeout(2000); // optional wait
   await page.getByRole('button', { name: 'Upload' }).click();
 
   await expect(page.locator('h3')).toHaveText('File Uploaded!');

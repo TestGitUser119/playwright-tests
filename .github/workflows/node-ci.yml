@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v3
@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Fix Playwright permission (if needed)
+    - name: Fix Playwright permission (optional safety)
       run: chmod +x ./node_modules/.bin/playwright
 
     - name: Install Playwright browsers

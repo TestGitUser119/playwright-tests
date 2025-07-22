@@ -19,5 +19,5 @@ jobs:
     - name: Build Docker image
       run: docker build -t playwright-tests .
 
-    - name: Run Playwright tests inside container
-      run: docker run --rm playwright-tests
+    - name: Run a specific Playwright test inside container
+      run: docker run --rm playwright-tests npx playwright test tests/Google.spec.js

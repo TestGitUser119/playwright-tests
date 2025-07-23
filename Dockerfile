@@ -5,9 +5,13 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci
 
+# Install browsers
+RUN npx playwright install --with-deps
+
 COPY . .
 
-# ✅ Add this line to make node_modules binaries executable
+# Make binaries executable
 RUN chmod -R +x node_modules/.bin
 
-CMD ["npx", "playwright", "test"]
+# Run a specific test by name
+CMD ["npx", "playwright", "test", "--grep", "Google.spec.js"]

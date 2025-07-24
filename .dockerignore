@@ -1,0 +1,14 @@
+# Ignore local dependencies (installed inside the container)
+node_modules/
+
+# Ignore test artifacts (reports/screenshots can be mounted if needed)
+playwright-report/
+screenshots/
+
+# Ignore Git and IDE files
+.git/
+.vscode/
+.github/
+
+# Optional: Ignore local debug files
+test-data/  # Only if you don't need it in the container

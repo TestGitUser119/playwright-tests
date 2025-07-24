@@ -1,16 +1,16 @@
-# Microsoft's pre-configured image with all dependencies
-FROM mcr.microsoft.com/playwright:v1.40.0-jammy
+FROM mcr.microsoft.com/playwright:v1.42.0-jammy
 
 WORKDIR /app
 
-# Copy package files first
-COPY package.json package-lock.json* ./
+# Copy ONLY package files first (optimizes caching)
+COPY package*.json ./
 
-# Install npm dependencies
+# Install dependencies (including Playwright)
 RUN npm install
 
-# Copy application code
+# Copy the rest of the project
 COPY . .
 
-# Run tests
-CMD ["npx", "playwright", "test", "tests/Google.spec.js"]
+# Run tests (using npx to avoid path issues)
+CMD ["npx", "playwright", "test","Google.spec.js"]
+

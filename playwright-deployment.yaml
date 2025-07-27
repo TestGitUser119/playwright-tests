@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playwright-tests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playwright-tests
+  template:
+    metadata:
+      labels:
+        app: playwright-tests
+    spec:
+      containers:
+      - name: playwright-container
+        image: qa00test001/imgrepo:20250727V1.1
+        imagePullPolicy: Always
+        command: ["npx", "playwright", "test","Google.spec.js"]  # Runs your tests
